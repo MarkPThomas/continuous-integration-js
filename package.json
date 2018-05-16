@@ -17,12 +17,12 @@
     "karma": "^2.0.2",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
-    "karma-coveralls": "^1.2.1",
-    "karma-jasmine": "^1.1.2",
-    "lcov-filter": "^0.1.1"
+    "karma-jasmine": "^1.1.2"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "coverage" : "",
+    "coveralls": "npm run-script coverage && node bin/coveralls.js < coverage/**/lcov.info"
   },
   "license": "WTFPL",
   "keywords": [
