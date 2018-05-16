@@ -18,18 +18,22 @@ addons:
   sonarcloud:
     organization: "markpthomas-github"
 
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 install:
   # Install npm packages
   - npm install
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-#  - npm test
+  - npm test
 
 # see: https://stackoverflow.com/questions/22361462/coveralls-io-with-travis-ci
 # see: https://karma-runner.github.io/0.8/plus/Travis-CI.html
 after_script:
-  - ./node_modules/karma/bin/karma start karma.conf.js --single-run
 #  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - cat ./coverage/lcov.info ./coverage/karma/**/*.info > lcov.info
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

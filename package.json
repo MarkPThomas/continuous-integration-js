@@ -20,7 +20,7 @@
     "karma-jasmine": "^1.1.2"
   },
   "scripts": {
-    "test": "jshint helloworld.jasmine.js"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "license": "WTFPL",
   "keywords": [
