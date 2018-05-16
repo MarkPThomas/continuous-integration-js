@@ -2,9 +2,9 @@
 // Generated on Wed May 16 2018 00:08:40 GMT-0600 (Mountain Daylight Time)
 
 module.exports = function(config) {
-  config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+  // config.set({
+    var configuration = {
+        // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
 
@@ -41,8 +41,8 @@ module.exports = function(config) {
 
     // optionally, configure the reporter
     coverageReporter: {
-    type: 'lcov',
-      dir: 'coverage/'
+        type: 'lcov',
+        dir: 'coverage/'
     },
 
     // web server port
@@ -64,7 +64,16 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    // see https://docs.travis-ci.com/user/chrome
+    // browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+
+    // you can define custom flags
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox']
+      }
+    },
 
 
     // Continuous Integration mode
@@ -74,5 +83,11 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  });
+  };
+  // });
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['ChromeHeadlessNoSandbox'];
+    }
+
+    config.set(configuration);
 };

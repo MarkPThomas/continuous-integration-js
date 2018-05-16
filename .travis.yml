@@ -6,8 +6,7 @@ language: node_js
 
 # Define the js versions against we want to test our code
 node_js:
-  - "iojs"
-  - "8"
+  - "node"
 
 env:
   global:
@@ -15,6 +14,7 @@ env:
     - secure: "KCRVNNrsPVX8aBkWh2MuyAVhlXt1J/igU0dVMFGJRb3/wM7dzqQqICnzQ5Y0e6PR8Lr8xclovFhvia4oQbc+IPgJxR5dB9zuQ6MMoEdkOMuAyIyUeyHZWtpbxIZ45x10MlYfDoA2jNR26/1nvPe6DWzfS/CeCqj93czo7T34T98mdMdIAozAjFuhTkOz+td3cY+YTvCwkF5zo6ImtQkoH0Wy+Sgn2p7Eu7+eTVEn+4BpFj9cbhutN9ebVhGWbKouEKIOVLR8+BaAEBWAsFMs8FdY3sETnrlZ0cAXbBy6gnkmGTRZDvEb2YCWZd1Yhf15c73uxxVlR5KHxwtQ4D0mg2hY47VE/zgRKKonTtHo44dnsUpJIFEUZNU6fhczUTZhXuy1PyHS98SU5CEreziJiySYHefS5Q5kdQKWzdPrn6ppHMdU/bKZHBwhD0OGd2Scn7/s4Co/jNepYMLya1yz0jegvqYJdMtSfCqeCQTI7jPDDFN813W9e8y8R4QMzVpFq23MtTONubfNgqiARuCd5qmOFvq1FaCgeUrG6jD1BCFnAobQt2MjvIsClGWUyau0NJNfQIxinkox/gAy4pWYe4w3OicKr+b/Vvx3qdXH6RhkGTAk4CNQNzrnNK15ZoJgJ/eQIFqnKUjNLGYmJeWFUNbDBFz8AbMu3SZXLOxUSzw="
 
 addons:
+  chrome: stable
   sonarcloud:
     organization: "markpthomas-github"
 
@@ -24,11 +24,13 @@ install:
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-  - npm test
+#  - npm test
 
 # see: https://stackoverflow.com/questions/22361462/coveralls-io-with-travis-ci
+# see: https://karma-runner.github.io/0.8/plus/Travis-CI.html
 after_script:
-  - ./node_modules/karma/bin/karma start
+  - ./node_modules/karma/bin/karma start -- single-run
+#  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - cat ./coverage/lcov.info ./coverage/karma/**/*.info > lcov.info
   - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
   - sonar-scanner -X
