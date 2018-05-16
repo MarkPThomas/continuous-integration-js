@@ -1,0 +1,4 @@
+load:
+  - src/helloworld.js
+test:
+  - tests/helloworld.test.js

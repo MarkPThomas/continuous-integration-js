@@ -1,0 +1,23 @@
+{
+  "name": "continuous-integration-js",
+  "version": "1.0.0",
+  "description": "Basic setup for unit testing and continuous integration tests for JavaScript.",
+  "main": "JasmineAdapter-1.1.2.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "karma-coverage": "^1.1.2",
+    "karma-coveralls": "^1.2.1"
+  },
+  "devDependencies": {
+    "karma-jasmine": "^1.1.2",
+    "jasmine-core": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mark Thomas",
+  "license": "ISC"
+}
