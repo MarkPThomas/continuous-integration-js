@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run",
-    "coveralls": "node bin/coveralls.js < coverage/reports/lcov.info"
+    "coveralls": "node ./node_modules/coveralls/bin/coveralls.js < coverage/reports/lcov.info"
   },
   "license": "WTFPL",
   "keywords": [
