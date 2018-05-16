@@ -30,7 +30,7 @@ install:
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
   - npm test
-
+#  - npm run-script test-on-travis
 # see: https://stackoverflow.com/questions/22361462/coveralls-io-with-travis-ci
 # see: https://karma-runner.github.io/0.8/plus/Travis-CI.html
 after_script:
