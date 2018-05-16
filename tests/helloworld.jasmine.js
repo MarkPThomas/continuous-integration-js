@@ -4,3 +4,10 @@ describe("Hello", function(){
             .toEqual("Hello, Maarten");
     });
 });
+
+describe("Goodbye", function(){
+    it("says goodbye, name", function(){
+        expect(sample.goodbye("Maarten"))
+            .toEqual("Goodbye, Maarten");
+    });
+});

@@ -4,20 +4,37 @@
   "description": "Basic setup for unit testing and continuous integration tests for JavaScript.",
   "main": "JasmineAdapter-1.1.2.js",
   "directories": {
-    "test": "tests"
+    "src": "src",
+    "test": "tests",
+    "output": "",
+    "doc": ""
   },
-  "dependencies": {
-    "karma-coverage": "^1.1.2",
-    "karma-coveralls": "^1.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "karma-jasmine": "^1.1.2",
-    "jasmine-core": "^3.1.0"
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
+    "karma-coveralls": "^1.2.1",
+    "karma-jasmine": "^1.1.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "license": "WTFPL",
+  "keywords": [
+    "javascript",
+    "ci",
+    "continuous-integration",
+    "travis-ci",
+    "sonarcloud",
+    "sonarqube-scan",
+    "coveralls"
+  ],
   "author": "Mark Thomas",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MarkPThomas/continuous-integration-js.git"
+  }
 }

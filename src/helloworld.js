@@ -1,4 +1,4 @@
-let sample = {
+var sample = {
     hello: function(name){
         return 'Hello, ' + name;
         },

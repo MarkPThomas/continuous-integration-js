@@ -15,8 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/*.js',
-      'tests/*.jasmine.js'
+      'src/**/*.js',
+      'tests/**/*.jasmine.js'
     ],
 
 
@@ -27,15 +27,23 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    // Doo not include tests or libraries
     preprocessors: {
+      'src/**/*.js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    // coverage reporter generates the coverage
+    reporters: ['progress', 'coverage'],
 
+    // optionally, configure the reporter
+    coverageReporter: {
+    type: 'lcov',
+      dir: 'coverage/'
+    },
 
     // web server port
     port: 9876,
@@ -66,5 +74,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
