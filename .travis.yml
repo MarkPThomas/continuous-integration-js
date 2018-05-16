@@ -32,13 +32,11 @@ install:
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
   - npm test
-  - npm run-script coveralls
 # see: https://stackoverflow.com/questions/22361462/coveralls-io-with-travis-ci
 # see: https://karma-runner.github.io/0.8/plus/Travis-CI.html
+
 after_script:
-#  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-#  - cat ./coverage/lcov.info ./coverage/karma/**/*.info > lcov.info
-#  - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - npm run-script coveralls
   - sonar-scanner -X
 
 # Tell Travis CI to monitor only 'master' branch
